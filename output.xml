@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="urn:uuid:e5d77b89-91f3-4bba-baac-39bc85341e2a">
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="urn:uuid:ce1cd919-23ed-4466-a12b-5a38ff00176e">
 	<data>
 		<native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
 			<version>16.9</version>
@@ -74,7 +74,14 @@
 				</GigabitEthernet>
 				<GigabitEthernet>
 					<name>2</name>
-					<shutdown/>
+					<ip>
+						<address>
+							<primary>
+								<address>192.168.2.2</address>
+								<mask>255.255.255.0</mask>
+							</primary>
+						</address>
+					</ip>
 					<mop>
 						<enabled>false</enabled>
 						<sysid>false</sysid>
@@ -224,15 +231,26 @@
 				<config>
 					<name>GigabitEthernet2</name>
 					<type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
-					<enabled>false</enabled>
+					<enabled>true</enabled>
 				</config>
 				<subinterfaces>
 					<subinterface>
 						<index>0</index>
 						<config>
 							<index>0</index>
-							<enabled>false</enabled>
+							<enabled>true</enabled>
 						</config>
+						<ipv4 xmlns="http://openconfig.net/yang/interfaces/ip">
+							<addresses>
+								<address>
+									<ip>192.168.2.2</ip>
+									<config>
+										<ip>192.168.2.2</ip>
+										<prefix-length>24</prefix-length>
+									</config>
+								</address>
+							</addresses>
+						</ipv4>
 						<ipv6 xmlns="http://openconfig.net/yang/interfaces/ip">
 							<config>
 								<enabled>false</enabled>
@@ -377,8 +395,13 @@
 			<interface>
 				<name>GigabitEthernet2</name>
 				<type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
-				<enabled>false</enabled>
-				<ipv4 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip"/>
+				<enabled>true</enabled>
+				<ipv4 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip">
+					<address>
+						<ip>192.168.2.2</ip>
+						<netmask>255.255.255.0</netmask>
+					</address>
+				</ipv4>
 				<ipv6 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip"/>
 			</interface>
 			<interface>
